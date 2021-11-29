@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/tailwind.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+	<title>information</title>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+</head>
+<body>
+	<header class="w-full justify-around h-[140px] flex flex-wrap fixed md:h-[68px] z-[99] bg-gray-800 items-center">
+		<div class="flex md:flex-1 ml-3">
+			<i class="fas fa-grin-alt fa-2x text-yellow-400"></i>
+		</div>
+		<div class="search relative flex md:flex-1 mt-1 mb-[14px]">
+			<button class="text-white absolute top-[13px] pl-1"><i class="fas fa-search"></i></button>
+			<input class="max-w-[429px] bg-black rounded-[6px] h-[50px] w-full py-1 pl-[30px] pr-1" type="text" placeholder="Search">
+		</div>
+		<div>
+			<div class="flex md:flex-1 relative  items-center justify-end">
+				<span class="text-white">Active</span>
+				<span class="text-[#E5E7EB] hover:text-white ml-[45px] mr-[29px]">link</span>
+				<i class=" text-[#64b9ce] fas fa-robot fa-2x"></i>
+				<button onclick="AddSubMenu()" class="ml-[14px] text-white mr-[15px]">Hi, User <span><i class="pl-[1px] fas fa-angle-down text-white "></i></span></button>
+			</div>
+			<div id="menu" class="hidden">
+				<div  class="text-white mt-1 mr-[25px] px-2 pt-6 pb-[7px] bg-gray-800 absolute right-0">
+					<input class="py-1 pl-1 rounded-sm w-[221px] h-[42px] " type="text" placeholder="Search..">
+					<div class="py-1 cursor-pointer"><i class="fas px-1 fa-user"></i><span>Profile</span></div>
+					<div class="py-1 cursor-pointer"><i class="fas px-1 fa-cog"></i><span>Setting</span></div>
+					<div class="py-1 cursor-pointer"><i class="fas px-1 fa-sign-out-alt"></i><span>Logout</span></div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class=" flex flex-wrap relative top-[68px] md:pl-[192px]">
+		<div class="task-bar md:block px-3 bg-gray-800 fixed md:top-[65px]  bottom-0 left-0 md:w-[192px] "  >
+			<div class="md:relative item-task-bar">
+				<div class="py-[16px] text-white hover:border-b-[2px]  border-b-[2px] border-b-gray-800 hover:border-[#c44b91]"><i class=" pr-1 fas fa-tasks"></i><span>Task</span></div>
+				<div class="py-[16px] text-white hover:border-b-[2px] border-b-[2px] border-b-gray-800 hover:border-[#c249b8]"><a href="information.html"><i class=" pr-1 far fa-envelope"></i><span>Messages</span></a></div>
+				<div class="py-[16px] text-white border-b-[2px] border-[#605ee0]"><a href="index.html"><i class=" pr-1 fas fa-chart-area"></i><span>Analytics</span></a></div>
+				<div class="py-[16px] text-white hover:border-b-[2px] border-b-[2px] border-b-gray-800 hover:border-[#b12121] "><i class=" pr-1 fas fa-wallet"></i><span>Payments</span></div>
+			</div>
+		</div>
+		<div class="w-full pt-11">
+			<div class="pb-11 ml-7 cursor-pointer">
+				<a href="add.html" class="px-5 py-3 rounded-md hover:bg-pink-300 bg-green-500 text-white">Add</a>
+			</div>
+			<div class="container flex w-full justify-center mx-auto">
+				<div class="flex flex-col w-full">
+					<div class="w-full">
+						<div class="border-b border-gray-200 shadow">
+							<table class="divide-y divide-gray-300 ">
+								<thead class="bg-gray-50">
+									<tr>
+										<th class="px-6 py-2 text-xs text-gray-500 w-[16%]">
+											ID
+										</th>
+										<th class="px-6 py-2 text-xs text-gray-500 w-[16%]">
+											Name
+										</th>
+										<th class="px-6 py-2 text-xs text-gray-500 w-[16%]">
+											Email
+										</th>
+										<th class="px-6 py-2 text-xs text-gray-500 w-[16%]">
+											Created_at
+										</th>
+										<th class="px-6 py-2 text-xs text-gray-500 w-[16%]">
+											Edit
+										</th>
+										<th class="px-6 py-2 text-xs text-gray-500 w-[16%]">
+											Delete
+										</th>
+									</tr>
+								</thead>
+								<tbody class="bg-white divide-y divide-gray-300">
+									<tr class="whitespace-nowrap">
+										<td class="px-6 py-4  text-sm text-gray-500 text-center w-[16%]">
+											1
+										</td>
+										<td class="px-6 py-4 text-sm text-gray-500 text-center w-[16%]">
+											<div class="text-sm text-gray-900">
+												Jon doe
+											</div>
+										</td>
+										<td class="px-6 py-4 text-sm text-gray-500 text-center w-[16%]">
+											<div class="text-sm text-gray-500">jhondoe@example.com</div>
+										</td>
+										<td class="px-6 py-4  text-sm text-gray-500 text-center w-[16%]">
+											2021-1-12
+										</td>
+										<td class="px-6 py-4 text-sm text-gray-500 text-center w-[16%]">
+											<a href="#">
+												<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-blue-400" fill="none"
+													viewBox="0 0 24 24" stroke="currentColor">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+														d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+												</svg>
+											</a>
+										</td>
+										<td class="px-6 py-4 text-sm text-gray-500 text-center w-[16%] ">
+											<a href="#">
+												<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-400" fill="none"
+													viewBox="0 0 24 24" stroke="currentColor">
+													<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+														d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+												</svg>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<script>
+		// function toggleDD(AddSubMenu){
+        //     document.getElementById(AddSubMenu).classList.toggle("invisible");
+        // }
+
+		function AddSubMenu() {
+			var menu = document.getElementById('menu');
+			if(menu.className==="hidden"){
+				menu.className += "block";
+			}
+			else{
+				menu.className = "hidden";
+			}
+		}
+		
+	</script>
+</body>
+</html>

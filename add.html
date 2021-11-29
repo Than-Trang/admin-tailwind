@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/tailwind.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+	<title>add</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@3.6.0/dist/chart.min.js"></script>
+</head>
+<body>
+	<header class="w-full justify-around h-[140px] flex flex-wrap fixed md:h-[68px] z-[99] bg-gray-800 items-center">
+		<div class="flex md:flex-1 ml-3">
+			<i class="fas fa-grin-alt fa-2x text-yellow-400"></i>
+		</div>
+		<div class="search relative flex md:flex-1 mt-1 mb-[14px]">
+			<button class="text-white absolute top-[13px] pl-1"><i class="fas fa-search"></i></button>
+			<input class="max-w-[429px] bg-black rounded-[6px] h-[50px] w-full py-1 pl-[30px] pr-1" type="text" placeholder="Search">
+		</div>
+		<div>
+			<div class="flex md:flex-1 relative  items-center justify-end">
+				<span class="text-white">Active</span>
+				<span class="text-[#E5E7EB] hover:text-white ml-[45px] mr-[29px]">link</span>
+				<i class=" text-[#64b9ce] fas fa-robot fa-2x"></i>
+				<button onclick="AddSubMenu()" class="ml-[14px] text-white mr-[15px]">Hi, User <span><i class="pl-[1px] fas fa-angle-down text-white "></i></span></button>
+			</div>
+			<div id="menu" class="hidden">
+				<div  class="text-white mt-1 mr-[25px] px-2 pt-6 pb-[7px] bg-gray-800 absolute right-0">
+					<input class="py-1 pl-1 rounded-sm w-[221px] h-[42px] " type="text" placeholder="Search..">
+					<div class="py-1 cursor-pointer"><i class="fas px-1 fa-user"></i><span>Profile</span></div>
+					<div class="py-1 cursor-pointer"><i class="fas px-1 fa-cog"></i><span>Setting</span></div>
+					<div class="py-1 cursor-pointer"><i class="fas px-1 fa-sign-out-alt"></i><span>Logout</span></div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class=" flex flex-wrap relative top-[68px] md:pl-[192px]">
+		<div class="task-bar md:block px-3 bg-gray-800 fixed md:top-[65px]  bottom-0 left-0 md:w-[192px] "  >
+			<div class="md:relative item-task-bar">
+				<div class="py-[16px] text-white hover:border-b-[2px]  border-b-[2px] border-b-gray-800 hover:border-[#c44b91]"><i class=" pr-1 fas fa-tasks"></i><span>Task</span></div>
+				<div class="py-[16px] text-white hover:border-b-[2px] border-b-[2px] border-b-gray-800 hover:border-[#c249b8]"><a href="information.html"><i class=" pr-1 far fa-envelope"></i><span>Messages</span></a></div>
+				<div class="py-[16px] text-white border-b-[2px] border-[#605ee0]"><a href="index.html"><i class=" pr-1 fas fa-chart-area"></i><span>Analytics</span></a></div>
+				<div class="py-[16px] text-white hover:border-b-[2px] border-b-[2px] border-b-gray-800 hover:border-[#b12121] "><i class=" pr-1 fas fa-wallet"></i><span>Payments</span></div>
+			</div>
+		</div>
+		<div class="w-full flex mx-auto justify-center mt-[100px] max-w-[150px] flex-col">
+			 <select name="select" id="select" class="mb-[50px] ">
+          <option value="page1.html">page 1</option>
+          <option value="page2.html">page 2</option>
+       </select>
+       <button id="btn" class=" px-3 py-2 text-white rounded-xl bg-green-300 hover:bg-pink-300">Tải Nội Dung</button>
+       <div id="div1" class=" mt-[20px] border-[1px] hidden border-green-300 text-center p-[15px]">
+
+       </div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function AddSubMenu() {
+			var menu = document.getElementById('menu');
+			if(menu.className==="hidden"){
+				menu.className += "block";
+			}
+			else{
+				menu.className = "hidden";
+			}
+		}
+		$('#submit').on('click',function(e){
+      e.preventDefault();
+			var email = $('#email').val();
+			var name = $('#name').val();
+			if(  email == '' ||name == '' ){
+				alert('hay dien day du thong tin');
+			}
+			else{
+				$.ajax({
+					url: "ajax_action.php",//gui toi file dax= tao (thuc hien chen)
+					method: "POST",//gui bang hinh thuc post
+					data: { email: email, name: name},//gui thong tin toi dau (ten:truong du lieu)
+					success: function(data){
+						alert('insert du lieu thanh cong');
+						if('#insert')[0].reset();
+
+					}
+          
+					//
+				})
+			}
+		})
+    $('#btn').on('click',function(e){
+      e.preventDefault();
+			var a = $('#select').val();
+      console.log(a);
+      $.ajax({url: "/"+a, success: function(result){
+       $("#div1").html(result).removeClass("hidden");
+
+      console.log(result);
+      }});
+          
+			
+		})
+		
+		
+	</script>
+</body>
+</html>
